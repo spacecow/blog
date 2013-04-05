@@ -1,0 +1,18 @@
+en:
+  post:
+    one: 'Post'
+
+  labels:
+    add: Add %{o}
+    edit: Edit %{o}
+    new: New %{o}
+
+  successes:
+    created: '%{o} created'
+    updated: '%{o} updated'
+
+  simple_form:
+    labels:
+      post:
+        sections:
+          tag_tokens: Tags
