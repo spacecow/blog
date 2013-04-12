@@ -1,0 +1,9 @@
+<% present Tag do |presenter| %>
+
+<div class="tags cloud">
+  <% tag_cloud Section.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag), class: css_class %>
+  <% end %>
+</div>
+
+<% end %>

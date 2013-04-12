@@ -1,7 +1,9 @@
 <% present section do |presenter| %>
 
-<div class="section">
+<div class="section hover">
   <%= presenter.content %>
+  <%= presenter.tags %>
+  <%= presenter.actions :view, :edit, :delete %>
 </div>
 
 <% end %>

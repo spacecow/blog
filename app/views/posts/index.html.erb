@@ -1,0 +1,8 @@
+<% present Post do |presenter| %>
+
+<ul class="posts">
+  <%= presenter.posts @posts %>
+</ul>
+<%= presenter.actions :new %>
+
+<% end %>

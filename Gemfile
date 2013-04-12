@@ -6,6 +6,8 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'pygments.rb'
 gem 'redcarpet'
+gem 'ancestry'
+gem 'yajl-ruby'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

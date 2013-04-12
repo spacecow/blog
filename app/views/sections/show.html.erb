@@ -1,0 +1,9 @@
+<% present @section do |presenter| %>
+
+<div class="section">
+  <%= presenter.content %>
+  <%= presenter.tags %>
+  <%= presenter.actions :edit, :delete %>
+</div>
+
+<% end %>

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Tagship do
+describe Tagging do
 end

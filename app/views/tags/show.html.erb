@@ -1,0 +1,9 @@
+<% present @tag do |presenter| %>
+
+<%= presenter.branch %>
+<div class="tag show">
+  <%= presenter.sections %>
+</div>
+<%= presenter.actions :edit %>
+
+<% end %>

@@ -1,4 +1,13 @@
 module ApplicationHelper
+
+  def tag_cloud(tags, classes)
+    max = tags.sort_by(&:count).last
+    tags.each do |tag|
+      index = tag.count.to_f / Integer(max.count) * (classes.size - 1)
+      yield(tag, classes[index.round])
+    end
+  end  
+
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
       sha = Digest::SHA1.hexdigest(code)

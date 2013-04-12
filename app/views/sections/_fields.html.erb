@@ -1,2 +1,3 @@
+<%= f.input :post_id, as: :select, collection:Post.scoped %>
 <%= f.input :content %>
 <%= f.input :tag_tokens, input_html:{data:{load:f.object.tags}} %>

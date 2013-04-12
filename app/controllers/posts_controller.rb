@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
   end
 
+  def index
+    @posts = Post.scoped
+  end
+
   def new
     @post = Post.new
     @post.sections.build

@@ -15,15 +15,9 @@ describe 'posts/_form.html.erb' do
       its(:value){ should be_nil }
     end
 
-    context 'Content' do
-      subject{ rendering.find_field 'Content' } 
-      its(:value){ should be_blank }
-    end
-
-    context 'Tags' do
-      subject{ rendering.find_field 'Tags' } 
-      its(:value){ should be_nil }
-    end
+    subject{ rendering }
+    it{ should have_field 'Content', count:1 }
+    it{ should have_field 'Tags', count:1 }
   end
 
   context "edit post" do
@@ -38,14 +32,8 @@ describe 'posts/_form.html.erb' do
       its(:value){ should eq 'oh yeah' }
     end
 
-    context 'Content' do
-      subject{ rendering.find_field 'Content' } 
-      its(:value){ should eq 'description' }
-    end
-
-    context 'Tags' do
-      subject{ rendering.find_field 'Tags' } 
-      its(:value){ should be_nil }
-    end
+    subject{ rendering }
+    it{ should have_field 'Content', count:1 }
+    it{ should have_field 'Tags', count:1 }
   end
 end

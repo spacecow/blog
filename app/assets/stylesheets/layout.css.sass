@@ -1,3 +1,24 @@
+$blue: #4B7399
+
+body
+  font-family: "Lucida Grande",arial,helvetica,sans-serif
+
+a
+  text-decoration: none 
+  color: $blue
+  text-shadow: 1px 1px 1px #aaa
+  &:hover
+    color: #eee
+    text-shadow: 1px 1px 1px $blue 
+
+.hover
+  &:hover
+    background: #eee
+
+div.section
+  padding: 10px
+  border: 1px solid white
+
 form
   div
     label
@@ -5,3 +26,28 @@ form
     textarea
       width: 800px
       height: 200px
+
+ul.inline
+  li
+    display: inline
+    font-style: italic
+
+.tag
+  a
+    font-size: 12px
+
+div.actions
+  font-size: 12px
+
+ul
+  list-style: none
+
+.tags.cloud
+  width: 400px
+  line-height: 1.6em
+  .s
+    font-size: 0.8em
+  .m
+    font-size: 1.2em
+  .l
+    font-size: 1.8em
