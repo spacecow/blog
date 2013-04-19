@@ -1,13 +1,4 @@
 module ApplicationHelper
-
-  def tag_cloud(tags, classes)
-    max = tags.sort_by(&:count).last
-    tags.each do |tag|
-      index = tag.count.to_f / Integer(max.count) * (classes.size - 1)
-      yield(tag, classes[index.round])
-    end
-  end  
-
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
       sha = Digest::SHA1.hexdigest(code)
@@ -16,6 +7,14 @@ module ApplicationHelper
       end
     end
   end
+
+  def tag_cloud(tags, classes)
+    max = tags.sort_by(&:count).last
+    tags.each do |tag|
+      index = tag.count.to_f / Integer(max.count) * (classes.size - 1)
+      yield(tag, classes[index.round])
+    end
+  end  
 
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new

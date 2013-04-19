@@ -4,10 +4,21 @@ describe SectionPresenter do
   let(:section){ stub_model Section }
   let(:presenter){ SectionPresenter.new(section,view) }
 
-  describe '#content' do
-    before{ section.should_receive(:content).and_return 'some other content' }
-    subject{ Capybara.string presenter.content }
-    its(:text){ should match /some other content/ }
+  describe '#content', focus:true do
+    context "" do
+      before{ section.should_receive(:content).and_return 'some other content' }
+      subject{ Capybara.string presenter.content }
+      its(:text){ should match /some other content/ }
+    end
+
+    context "link to other section" do
+      before do
+        create :section, id:1, content:'yeah'
+        section.should_receive(:content).and_return "some other content\n->1"
+      end
+      subject{ Capybara.string presenter.content }
+      its(:text){ should match /some other content.*->1/m }
+    end
   end
 
   describe '#post' do
