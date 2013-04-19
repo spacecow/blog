@@ -7,6 +7,8 @@ class Section < ActiveRecord::Base
 
   validates :content, presence:true
 
+  def post_title; post.try(:title) end
+
   def tag_tokens
     tags.map(&:id).join ', '
   end

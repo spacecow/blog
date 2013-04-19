@@ -11,9 +11,7 @@ describe 'Post new' do
   it{ lambda{ click_button 'Create' }.should change(Section,:count).by(1) }
 
   context 'content blank' do
-    before do
-      fill_in 'Content', with:''
-    end
+    before{ fill_in 'Content', with:'' }
 
     it{ lambda{ click_button 'Create' }.should change(Post,:count).by(1) }
     it{ lambda{ click_button 'Create' }.should change(Section,:count).by(0) }

@@ -11,8 +11,5 @@ describe 'sections/index.html.erb' do
   subject{ rendering }
   it{ should have_selector 'div.sections' }
 
-  describe 'actions' do
-    subject{ rendering.find 'div.actions.sections' }
-    it{ should have_selector 'a.new.section' }
-  end
+  it{ should have_selector 'div.actions.sections a.new.section', count:2 }
 end

@@ -1,6 +1,34 @@
 require 'spec_helper'
 
 describe TagsController do
+  context 'create a tag' do
+    let!(:tag){ build :tag }
+    before{ Tag.should_receive(:new).and_return tag }
+
+    context 'saves to db' do
+      before{ post :create }
+
+      context 'response' do
+        subject{ response }
+        it{ should redirect_to tag }
+      end
+
+      context 'flash' do
+        subject{ flash }
+        its(:notice){ should eq 'Tag created' }
+      end
+    end
+
+    context 'error' do
+      before do
+        tag.should_receive(:save).and_return false 
+        post :create
+      end
+      subject{ response }
+      it{ should render_template :new }
+    end
+  end
+
   context 'update a tag' do
     let(:tag){ mock_model Tag }
     before{ Tag.should_receive(:find).and_return tag }

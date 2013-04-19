@@ -1,8 +1,11 @@
 <% present @section do |presenter| %>
 
+
 <div class="section">
-  <%= presenter.content %>
+  <%= presenter.post %>
   <%= presenter.tags %>
+  <%= presenter.actions :edit, :delete %>
+  <%= presenter.content %>
   <%= presenter.actions :edit, :delete %>
 </div>
 

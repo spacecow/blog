@@ -9,12 +9,10 @@ describe 'sections/show.html.erb' do
   end
 
   subject{ rendering }
-  it{ should have_selector 'div.content' }
+  it{ should have_selector 'h1' }
   it{ should have_selector 'div.tags' }
+  it{ should have_selector 'div.content' }
 
-  describe 'actions' do
-    subject{ rendering.find 'div.actions.section' }
-    it{ should have_selector 'a.edit.section' }
-    it{ should have_selector 'a.delete.section' }
-  end
+  it{ should have_selector 'div.actions.section a.edit.section', count:2 }
+  it{ should have_selector 'div.actions.section a.delete.section', count:2 }
 end

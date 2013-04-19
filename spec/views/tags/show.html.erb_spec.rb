@@ -11,8 +11,5 @@ describe 'tags/show.html.erb' do
   subject{ rendering.find 'div.tag.show' }
   it{ should have_selector 'div.sections' } 
 
-  describe 'actions' do
-    subject{ rendering.find 'div.actions.tag' }
-    it{ should have_selector 'a.edit.tag' }
-  end
+  it{ should have_selector 'div.actions.tag a.edit.tag', count:2 }
 end

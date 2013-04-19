@@ -19,7 +19,9 @@ describe TagPresenter do
   end
 
   describe '#tags' do
-    subject{ Capybara.string presenter.tags [tag] }
-    it{ should have_selector 'li.tag', count:1 }
+    let(:perl){ create :tag, name:'perl' }
+    subject{ Capybara.string presenter.tags [tag,perl] }
+    it{ should have_selector 'li.tag.title', count:2 }
+    its(:text){ should eq 'ruby, perl' }
   end
 end

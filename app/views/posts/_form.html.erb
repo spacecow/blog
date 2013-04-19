@@ -3,6 +3,6 @@
   <%= f.fields_for :sections do |builder| %>
     <%= render 'sections/fields', f:builder %>
   <% end %>
-  <%= link_to_add_fields add(:post), f, :sections %>
+  <%= link_to_add_fields add(:section), f, :sections %>
   <%= f.button :submit %>
 <% end %>

@@ -11,6 +11,19 @@ class TagsController < ApplicationController
     end
   end
 
+  def new
+    @tag = Tag.new
+  end
+
+  def create
+    @tag = Tag.new params[:tag]
+    if @tag.save
+      redirect_to @tag, notice:created(:tag) 
+    else
+      render :new
+    end
+  end
+
   def edit
     @tag = Tag.find params[:id]
   end

@@ -11,6 +11,15 @@ class SectionPresenter < BasePresenter
     h.render 'sections/form', section:section
   end
 
+  def post
+    h.content_tag :h1 do
+      _post = section.post
+      if _post
+        h.link_to _post.title, _post
+      end
+    end
+  end
+
   def sections _sections
     h.render _sections
   end

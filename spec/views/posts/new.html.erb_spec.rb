@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe 'posts/new.html.erb' do
+  let(:post){ stub_model(Post).as_new_record }
   before do
-    assign :post, stub_model(Post).as_new_record
+    assign :post, post
     render
   end
 

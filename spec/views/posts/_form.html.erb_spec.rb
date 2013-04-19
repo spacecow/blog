@@ -18,6 +18,11 @@ describe 'posts/_form.html.erb' do
     subject{ rendering }
     it{ should have_field 'Content', count:1 }
     it{ should have_field 'Tags', count:1 }
+  
+    context "add section" do
+      subject{ rendering.find 'a.add_fields' }
+      its(:text){ should eq 'Add Section' }
+    end
   end
 
   context "edit post" do

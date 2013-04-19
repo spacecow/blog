@@ -8,11 +8,11 @@ describe 'Section delete' do
       visit section_path section
     end
 
-    it{ lambda{ click_link 'Delete' }.should change(Section,:count).by(-1) }
-    it{ lambda{ click_link 'Delete' }.should change(Tagging,:count).by(-1) }
+    it{ lambda{ first(:link,'Delete').click }.should change(Section,:count).by(-1) }
+    it{ lambda{ first(:link,'Delete').click }.should change(Tagging,:count).by(-1) }
 
     context 'redirect' do
-      before{ click_link 'Delete' }
+      before{ first(:link,'Delete').click }
       subject{ page }
       its(:current_path){ should eq sections_path }
     end
