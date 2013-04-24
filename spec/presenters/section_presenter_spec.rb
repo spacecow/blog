@@ -4,7 +4,7 @@ describe SectionPresenter do
   let(:section){ stub_model Section }
   let(:presenter){ SectionPresenter.new(section,view) }
 
-  describe '#content', focus:true do
+  describe '#content' do
     context "" do
       before{ section.should_receive(:content).and_return 'some other content' }
       subject{ Capybara.string presenter.content }
@@ -17,7 +17,7 @@ describe SectionPresenter do
         section.should_receive(:content).and_return "some other content\n->1"
       end
       subject{ Capybara.string presenter.content }
-      its(:text){ should match /some other content.*->1/m }
+      its(:text){ should match /some other content.*yeah/m }
     end
   end
 

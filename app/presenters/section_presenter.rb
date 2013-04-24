@@ -4,7 +4,7 @@ class SectionPresenter < BasePresenter
   def content
     _content = section.content
     h.content_tag :div, class: :content do
-      _content.gsub!(/->(\d+)/){ Section.exists?($1) ? Section.find($1).content : 'XXXXX Section id does not exist! XXXXX' }
+      _content.gsub!(/->(\d+)/){ Section.exists?($1) ? h.render(Section.find($1)) : 'XXXXX Section id does not exist! XXXXX' } if _content
       h.markdown (_content || '')
     end
   end

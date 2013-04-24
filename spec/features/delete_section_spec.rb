@@ -25,10 +25,10 @@ describe 'Section delete' do
       visit post_path post
     end
 
-    it{ lambda{ click_link 'Delete' }.should change(Section,:count).by(-1) }
+    it{ lambda{ first(:link,'Delete').click }.should change(Section,:count).by(-1) }
 
     context 'redirect' do
-      before{ click_link 'Delete' }
+      before{ first(:link,'Delete').click }
       subject{ page }
       its(:current_path){ should eq post_path(post) }
     end
