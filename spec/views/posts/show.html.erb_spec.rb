@@ -14,8 +14,5 @@ describe 'posts/show.html.erb' do
   it{ should have_selector 'h1' }
   it{ should have_selector 'div.sections' }
 
-  describe 'actions' do
-    subject{ rendering.find 'div.actions.post' }
-    it{ should have_selector 'a.edit.post' }
-  end
+  it{ should have_selector 'div.actions.post a.edit.post', count:2 }
 end
