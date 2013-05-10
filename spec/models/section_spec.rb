@@ -93,7 +93,7 @@ describe Section do
       it "one section, one tag" do
         tags = Section.tag_counts
         tags.to_a.count.should be 1 
-        tags.to_a.first.count.should eq "1"
+        tags.to_a.first.count.should eq 1
       end
 
       it "one section, two tags" do
@@ -101,8 +101,8 @@ describe Section do
         section1.tags << tag2
         tags = Section.tag_counts
         tags.to_a.count.should be 2
-        tags.to_a.first.count.should eq "1"
-        tags.to_a.last.count.should eq "1"
+        tags.to_a.first.count.should eq 1
+        tags.to_a.last.count.should eq 1
       end
 
       it "two sections, one tag" do
@@ -110,7 +110,7 @@ describe Section do
         section2.tags << tag1
         tags = Section.tag_counts
         tags.to_a.count.should be 1 
-        tags.to_a.first.count.should eq "2"
+        tags.to_a.first.count.should eq 2
       end
     end
   end

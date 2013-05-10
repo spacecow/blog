@@ -6,7 +6,7 @@ describe SectionsController do
     before{ Section.should_receive(:new).and_return section }
 
     context 'saves to db' do
-      before{ post :create }
+      before{ post :create, section:{content:'yeah'} }
 
       context 'response' do
         subject{ response }
@@ -22,7 +22,7 @@ describe SectionsController do
     context 'error' do
       before do
         section.should_receive(:save).and_return false
-        post :create
+        post :create, section:{content:'yeah'}
       end
       subject{ response }
       it{ should render_template :new }
@@ -36,7 +36,7 @@ describe SectionsController do
     context 'saves to db' do
       before do
         section.should_receive(:update_attributes).and_return true
-        put :update, id:1
+        put :update, id:1, section:{content:'yeah'}
       end
       
       context 'response' do
@@ -53,7 +53,7 @@ describe SectionsController do
     context 'error' do
       before do
         section.should_receive(:update_attributes).and_return false
-        put :update, id:1
+        put :update, id:1, section:{content:'yeah'}
       end
       subject{ response }
       it{ should render_template :edit }

@@ -4,7 +4,7 @@ class SectionsController < ApplicationController
   end
 
   def index
-    @sections = Section.scoped
+    @sections = Section.all
   end
 
   def new
@@ -12,7 +12,7 @@ class SectionsController < ApplicationController
   end
 
   def create
-    @section = Section.new params[:section]
+    @section = Section.new section_params
     if @section.save
       redirect_to @section, notice:created(:section)
     else
@@ -26,7 +26,7 @@ class SectionsController < ApplicationController
 
   def update
     @section = Section.find params[:id]
-    if @section.update_attributes params[:section]
+    if @section.update_attributes section_params
       redirect_to @section, notice:updated(:section)
     else
       render :edit
@@ -44,5 +44,10 @@ class SectionsController < ApplicationController
     elsif previous_url == post_url
       redirect_to post_url
     end
+  end
+
+  def section_params
+  #attr_accessible :content, :tag_tokens, :post_id
+    params.require(:section).permit :content, :tag_tokens, :post_id
   end
 end

@@ -1,0 +1,19 @@
+Update to the latest rails 3 version and make sure all tests work
+
+gem 'rails', '3.2.13'
+
+Then updates some gems for rails 4
+
+gem 'rails', '4.0.0.rc1'
+gem 'sass-rails',   '~> 4.0.0.rc1'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'spork-rails', github:'railstutorial/spork-rails'
+gem 'simple_form', :git => 'https://github.com/plataformatec/simple_form.git'
+gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'activerecord-deprecated_finders'
+
+and make sure to delete the :assets wrapper group

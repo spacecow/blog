@@ -2,8 +2,6 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :sections, through: :taggings
 
-  attr_accessible :name, :parent_id
-
   validates :name, presence:true, uniqueness:true
 
   has_ancestry

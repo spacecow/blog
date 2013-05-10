@@ -49,7 +49,7 @@ describe PostsController do
 
   context "update a post" do
     let!(:_post){ create :post }
-    let(:update_post){ put :update, id:1 }
+    let(:update_post){ put :update, id:1, post:{title:'yey'} }
     
     context "saves to db" do
       before do

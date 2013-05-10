@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.scoped
+    @posts = Post.all
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new params[:post]
+    @post = Post.new post_params
     if @post.save
       redirect_to @post, notice:created(:post)
     else
@@ -27,10 +27,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find params[:id]
-    if @post.update_attributes params[:post]
+    if @post.update_attributes post_params
       redirect_to @post, notice:updated(:post)
     else
       render :edit
     end
+  end
+
+  def post_params
+    params.require(:post).permit :title, sections_attributes:[:content, :post_id, :tag_tokens, :id]
   end
 end

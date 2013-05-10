@@ -6,7 +6,7 @@ describe TagsController do
     before{ Tag.should_receive(:new).and_return tag }
 
     context 'saves to db' do
-      before{ post :create }
+      before{ post :create, tag:{name:'ruby'} }
 
       context 'response' do
         subject{ response }
@@ -22,7 +22,7 @@ describe TagsController do
     context 'error' do
       before do
         tag.should_receive(:save).and_return false 
-        post :create
+        post :create, tag:{name:'ruby'}
       end
       subject{ response }
       it{ should render_template :new }
@@ -34,8 +34,8 @@ describe TagsController do
     before{ Tag.should_receive(:find).and_return tag }
     context 'saves to db' do
       before do
-        tag.should_receive(:update_attributes).and_return true
-        put :update, id:1
+        tag.should_receive(:update).and_return true
+        put :update, id:1, tag:{name:'ruby'}
       end
 
       context 'response' do
@@ -51,8 +51,8 @@ describe TagsController do
 
     context 'error' do
       before do
-        tag.should_receive(:update_attributes).and_return false
-        put :update, id:1
+        tag.should_receive(:update).and_return false
+        put :update, id:1, tag:{name:'ruby'}
       end
       subject{ response }
       it{ should render_template :edit }

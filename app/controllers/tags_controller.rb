@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = Tag.scoped
+    @tags = Tag.all
     respond_to do |format|
       format.html
       format.json { render json:@tags.  tokens(params[:q]) }
@@ -16,7 +16,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new params[:tag]
+    @tag = Tag.new tag_params
     if @tag.save
       redirect_to @tag, notice:created(:tag) 
     else
@@ -30,7 +30,7 @@ class TagsController < ApplicationController
 
   def update
     @tag = Tag.find params[:id]
-    if @tag.update_attributes params[:tag]
+    if @tag.update tag_params
       redirect_to @tag, notice:updated(:tag)
     else
       render :edit
@@ -40,6 +40,10 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find params[:id]
     @tag.destroy
-    redirect_to tags_path, notice:deleted(:tag)
+    redirect_to tags_url, notice:deleted(:tag)
+  end
+
+  def tag_params
+    params.require(:tag).permit :name, :parent_id
   end
 end
