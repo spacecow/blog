@@ -19,7 +19,7 @@ class Section < ActiveRecord::Base
 
   class << self
     def tag_counts
-      Tag.select("tags.id, tags.name, count(taggings.id) as count").joins(:taggings).group("tags.id").order(:name)
+      Tag.select("tags.id, tags.name, count(taggings.id) as count").joins(:taggings).group("tags.id, tags.name").order(:name)
     end
   end
 end
