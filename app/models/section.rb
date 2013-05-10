@@ -3,8 +3,6 @@ class Section < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
-  #attr_accessible :content, :tag_tokens, :post_id
-
   validates :content, presence:true
 
   def post_title; post.try(:title) end
