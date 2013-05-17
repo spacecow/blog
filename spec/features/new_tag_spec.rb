@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe 'Tag new' do
   before do
+    create :tag, name:'language'
     visit new_tag_path
     fill_in 'Name', with:'ruby'
+    select 'language', from:'Parent'
   end
 
   it{ lambda{ click_button 'Create' }.should change(Tag,:count).by(1) }

@@ -51,11 +51,11 @@ describe Section do
         it 'tag and parent has to be made' do
         end
 
-        it 'tag exists, but parent is wrong' do
+        it 'tag exists, but not parent' do
           create :tag, name:'ruby'
         end
 
-        it 'parent exists' do
+        it 'parent exists, but not tag' do
           create :tag, name:'programming'
         end
 

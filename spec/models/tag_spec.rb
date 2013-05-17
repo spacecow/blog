@@ -28,4 +28,8 @@ describe Tag do
       tag.branch.should eq [parent,tag]
     end
   end
+
+  describe '#leaf_name=' do
+    let(:tag){ mock_model Tag }
+  end
 end

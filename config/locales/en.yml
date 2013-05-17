@@ -25,3 +25,5 @@ en:
           tag_tokens: Tags
       section:
         tag_tokens: Tags
+      tag:
+        leaf_name: Name
