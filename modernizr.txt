@@ -1,0 +1,12 @@
+html5shiv #the use of HTML5 sectioning elements in legacy browsers
+w/printshiv #If you need printing
+Modernizr.load
+Media Queries
+Add CSS Classes
+@font-face
+box-shadow
+rgba()
+CSS Gradients
+Input Attributes
+Input Types
+For more information: http://www.alistapart.com/articles/taking-advantage-of-html5-and-css3-with-modernizr/

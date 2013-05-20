@@ -1,0 +1,2 @@
+<%= f.input :name %>
+<%= f.input :parent_id, as: :select, collection:Tag.all.reject{|e| e==f.object} %>

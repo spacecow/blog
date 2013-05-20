@@ -1,5 +1,4 @@
 <%= simple_form_for tag do |f| %>
-  <%= f.input :name %>
-  <%= f.input :parent_id, as: :select, collection:Tag.all.reject{|e| e==tag} %>
+  <%= render 'tags/fields', f:f %>
   <%= f.button :submit %>
 <% end %>
