@@ -1,8 +1,10 @@
 en:
   post:
     one: Post
+    other: Posts
   section:
     one: Section
+    other: Sections
   tag:
     one: Tag
 

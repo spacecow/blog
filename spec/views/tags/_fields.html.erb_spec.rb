@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tags/_fields.html.erb', focus:true do
+describe 'tags/_fields.html.erb' do
   context 'edit tag' do
     let!(:ruby){ create :tag }
     let(:rendering){ Capybara.string rendered }
