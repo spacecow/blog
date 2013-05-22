@@ -9,6 +9,7 @@ module BasicApplicationHelper
   def edit(o,i=1) labels(:edit,o,i) end
   def english?; get_language == :en end
   def empty(s); jt('labels.empty',:o=>jt(s)) end
+  def english?; get_language == :en end
   def formtitle(mdl,tag="h3")
     s = mdl.class.to_s.underscore.to_sym
     minititle(mdl.new_record? ? new(s) : edit(s))
