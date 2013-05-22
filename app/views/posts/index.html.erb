@@ -1,5 +1,7 @@
 <% present Post do |presenter| %>
 
+<%= presenter.current_tab %>
+
 <ul class="posts">
   <%= presenter.posts @posts %>
 </ul>

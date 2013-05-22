@@ -1,11 +1,80 @@
-$bgcolour: #865140
+$bgcolour: #ddc385
+$gradientcolour: #d1d1d1
+$bordercolour: black
+$canvascolour: #eee
 
 nav
-  li
-    background: $bgcolour
-    display: inline-block
-    margin: 0 2px
-    padding: 4px 6px
-    a, a:link, a:visited
-      color: white
-      text-decoration: none
+  background: $canvascolour
+  position: relative
+  overflow: hidden
+  a, a:hover
+    text-shadow: none 
+    color: black
+  &:after
+    position: absolute
+    content: ''
+    bottom: 0
+    left: 0
+    width: 100%
+    border-bottom: 1px solid $bordercolour 
+    z-index: 1
+  &:before
+    z-index: 1
+  ul
+    list-style: none
+    margin: 0
+    padding: 0 0 0 10px
+    line-height: 24px
+    li
+      background:      -o-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+      background:     -ms-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+      background:    -moz-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+      background: -webkit-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+      background: linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF
+      position: relative
+      border: 1px solid $bordercolour
+      border-top-left-radius: 6px
+      border-top-right-radius: 6px
+      text-shadow: 0 1px #FFF
+      margin: 0 -5px
+      padding: 0 20px
+      display: inline-block
+      z-index: 0
+      &:before, &:after
+        position: absolute
+        bottom: -1px
+        width: 5px
+        height: 6px
+        content: ' '
+        border: 1px solid $bordercolour
+      &:before
+        left: -6px
+        border-bottom-right-radius: 6px
+        border-width: 0 1px 1px 0
+        box-shadow: 2px 2px 0 $bgcolour
+      &:after
+        right: -6px
+        border-bottom-left-radius: 6px
+        border-width: 0 0 1px 1px
+        box-shadow: -2px 2px 0 $bgcolour
+      &.active
+        background: white
+        border-bottom-color: white
+        z-index: 2
+        &:before
+          box-shadow: 2px 2px 0 white
+        &:after
+          box-shadow: -2px 2px 0 white
+//    background: $bgcolour
+//    display: inline-block
+//    margin: 0 2px
+//    padding: 4px 6px
+//    a, a:link, a:visited
+//      color: white
+//      text-decoration: none
+//    &.active
+//      background: white
+//      a, a:link, a:visited
+//        color: #555
+//        font-weight: bold

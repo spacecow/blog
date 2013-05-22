@@ -9,8 +9,13 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
-<%= yield %>
+<div id="full_container">
+  <%= render 'layouts/flash', flash:flash %>
+  <%= render 'layouts/header' %>
+  <div id="main_container">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

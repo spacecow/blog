@@ -16,6 +16,11 @@ describe 'Section new' do
     its(:post_id){ should be_nil }
   end
 
+  it "flash appears" do
+    click_button 'Create'
+    page.should have_text 'created'
+  end
+
   context 'content blank' do
     before{ fill_in 'Content', with:'' }
     it{ lambda{ click_button 'Create' }.should change(Section,:count).by(0) }

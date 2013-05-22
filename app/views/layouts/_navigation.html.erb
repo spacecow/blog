@@ -1,6 +1,7 @@
-<nav>
+<nav role="navigation">
   <ul>
     <%= nav_tab pl(:post), path:posts_path, current:yield(:current_tab) %>
     <%= nav_tab pl(:section), path:sections_path, current:yield(:current_tab) %>
+    <%= nav_tab pl(:tag), path:tags_path, current:yield(:current_tab) %>
   </ul>
 </nav>

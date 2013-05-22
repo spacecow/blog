@@ -1,7 +1,9 @@
 $blue: #4B7399
+$canvascolour: #eee
 
 body
   font-family: "Lucida Grande",arial,helvetica,sans-serif
+  background: $canvascolour
 
 a
   text-decoration: none 
@@ -30,6 +32,44 @@ ul
   .column
     width: 400px
     float: left
+
+//specific layout
+
+$full_width: 1000px
+#full_container
+  position: relative
+  width: $full_width
+  margin: 0 auto
+  background: white
+
+#flash_container
+  padding: 10px 0
+  height: 43px
+  background: $canvascolour 
+  div
+    padding: 12px 12px 12px 45px
+    background:
+      position: 10px 9px
+      repeat: no-repeat
+    color: white
+    font:
+      size: 16px
+      weight: bold
+    &.notice
+      background:
+        image: image-url("notification_check.png")
+        color: #006302
+
+#main_container
+  width: $full_width - 2px
+  background: white
+  position: absolute
+  top: 89px
+  left: 0
+  border:
+    left: 1px solid black
+    right: 1px solid black
+    bottom: 1px solid black
 
 div.section, div.post
   padding: 10px

@@ -14,6 +14,10 @@ class BasePresenter
     end
   end
 
+  def current_tab
+    h.content_for(:current_tab){ h.pl(singular) }
+  end
+
   def delete_link label = nil
     object = @object.class.to_s.downcase
     lbl = label || h.delete(object.to_sym)
@@ -30,6 +34,10 @@ class BasePresenter
     object = @object.to_s.downcase
     lbl = label || h.new(object.to_sym)
     h.link_to lbl, h.send("new_#{object}_path"), class:[:new, object]
+  end
+
+  def singular
+    @object.to_s.downcase
   end
 
   def view_link label = nil

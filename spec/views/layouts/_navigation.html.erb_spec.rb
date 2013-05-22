@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'layouts/_navigation.html.erb', focus:true do
+describe 'layouts/_navigation.html.erb' do
   let(:rendering){ Capybara.string rendered }
   before do
     view.content_for(:current_tab){ 'Posts' }
@@ -13,9 +13,15 @@ describe 'layouts/_navigation.html.erb', focus:true do
     specify{ subject[:href].should eq posts_path }
   end
 
-  describe 'inactive tab' do
-    subject{ rendering.find('li.inactive a') }
+  describe 'first inactive tab' do
+    subject{ rendering.all('li.inactive a')[0] }
     its(:text){ should eq 'Sections' }
     specify{ subject[:href].should eq sections_path }
+  end
+
+  describe 'second inactive tab' do
+    subject{ rendering.all('li.inactive a')[1] }
+    its(:text){ should eq 'Tags' }
+    specify{ subject[:href].should eq tags_path }
   end
 end
