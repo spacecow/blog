@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ApplicationHelper
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)

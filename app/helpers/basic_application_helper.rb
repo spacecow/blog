@@ -7,12 +7,14 @@ module BasicApplicationHelper
   def crop(o,i=1) labels(:crop,o,i) end
   def delete(o,i=1) labels(:delete,o,i) end
   def edit(o,i=1) labels(:edit,o,i) end
+  def english?; get_language == :en end
   def empty(s); jt('labels.empty',:o=>jt(s)) end
   def formtitle(mdl,tag="h3")
     s = mdl.class.to_s.underscore.to_sym
     minititle(mdl.new_record? ? new(s) : edit(s))
   end
   def ft(s); jt("formtastic.labels.#{s.to_s}") end
+  def get_language; I18n.locale end
   def jt(s,*opt)
     #TRANSLATION_LOG.debug s
     I18n.t(s,opt.first)

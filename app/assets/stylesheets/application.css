@@ -10,5 +10,8 @@
  *
  *= require_self
  *= require token-input-facebook
- *= require_tree .
+ *= require normalize 
+ *= require layout
+ *= require navigation
+ *= require pygments
  */
