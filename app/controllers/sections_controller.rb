@@ -9,6 +9,7 @@ class SectionsController < ApplicationController
 
   def new
     @section = Section.new
+    @section.tags << Tag.find_by(name:params[:tag_name]) if params[:tag_name]
   end
 
   def create

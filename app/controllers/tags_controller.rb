@@ -38,6 +38,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    p "DELETE!!!"
     @tag = Tag.find params[:id]
     @tag.destroy
     redirect_to tags_url, notice:deleted(:tag)

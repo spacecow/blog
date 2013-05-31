@@ -60,6 +60,9 @@ class BasePresenter
       define_method name do
         @object 
       end
+
+      define_method :parent do
+      end
     end
   end
 end

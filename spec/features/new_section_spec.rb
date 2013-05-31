@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Section new' do
+describe 'Section new, directly' do
   before do
     visit new_section_path
     fill_in 'Content', with:'some content'
@@ -25,4 +25,14 @@ describe 'Section new' do
     before{ fill_in 'Content', with:'' }
     it{ lambda{ click_button 'Create' }.should change(Section,:count).by(0) }
   end
+end
+
+describe 'Section new, indirectly from Tag show' do
+  let(:ruby){ create :tag, name:'ruby' }
+  before do
+    visit tag_path ruby
+    click_link 'New Section'
+  end
+
+  it{ find_field('Tags').value.should eq ruby.id.to_s }
 end

@@ -2,9 +2,12 @@
 
 <%= presenter.branch %>
 <div class="tag show">
-  <%= presenter.actions :edit %>
+  <%= presenter.actions :edit, :delete %>
+  <div class="actions section">
+    <%= link_to 'New Section', new_section_path(tag_name:@tag.name), class:[:new, :section] %>
+  </div>
   <%= presenter.sections %>
-  <%= presenter.actions :edit %>
+  <%= presenter.actions :edit, :delete %>
 </div>
 
 <% end %>
