@@ -1,71 +1,147 @@
-$bgcolour: #ddc385
+@import "compass/css3/border-radius"
+@import "compass/css3/images"
+
+$bgcolour: #4b7399 //#ddc385
 $gradientcolour: #d1d1d1
 $bordercolour: black
 $canvascolour: #eee
+$activecolour: white
+$radius: 6px
 
-nav
-  background: $canvascolour
+@mixin bottom_squares 
+  position: absolute
+  width: $radius 
+  height: $radius 
+  border: 1px solid $bordercolour
+  content: ''
+  bottom: -1px
+
+@mixin cut_left_square_top
+  +border-bottom-right-radius($radius)
+  border-width: 0 1px 1px 0
+@mixin cut_right_square_top
+  +border-bottom-left-radius($radius)
+  border-width: 0 0 1px 1px
+
+@mixin cover_left_square_bottom
+  box-shadow: 2px 2px 0 $activecolour 
+@mixin cover_right_square_bottom
+  box-shadow: -2px 2px 0 $activecolour
+
+@mixin rounded_bottom_left_corner
+  left: -7px
+  +bottom_squares
+  +cut_left_square_top
+  +cover_left_square_bottom
+@mixin rounded_bottom_right_corner
+  right: -7px
+  +bottom_squares
+  +cut_right_square_top
+  +cover_right_square_bottom
+
+@mixin well_defined_bottom_edge
   position: relative
   overflow: hidden
-  a, a:hover
-    text-shadow: none 
-    color: black
   &:after
     position: absolute
     content: ''
+    width: 100% //doesnt work unless absolute
     bottom: 0
     left: 0
-    width: 100%
-    border-bottom: 1px solid $bordercolour 
-    z-index: 1
-  &:before
-    z-index: 1
+    border-bottom: 1px solid $bordercolour
+    z-index: 1 //behind active tab
+
+nav
+  +well_defined_bottom_edge
+  a, a:hover
+    color: black
   ul
     list-style: none
     margin: 0
     padding: 0 0 0 10px
     line-height: 24px
+    background: #eee
     li
-      background:      -o-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
-      background:     -ms-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
-      background:    -moz-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
-      background: -webkit-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
-      background: linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF
-      position: relative
-      border: 1px solid $bordercolour
-      border-top-left-radius: 6px
-      border-top-right-radius: 6px
-      text-shadow: 0 1px #FFF
-      margin: 0 -5px
-      padding: 0 20px
+      position: relative //to get active tabs border in front
       display: inline-block
-      z-index: 0
-      &:before, &:after
-        position: absolute
-        bottom: -1px
-        width: 5px
-        height: 6px
-        content: ' '
-        border: 1px solid $bordercolour
+      border: 1px solid $bordercolour
+      +border-top-left-radius($radius)
+      +border-top-right-radius($radius)
+      +background-image(linear-gradient(color-stops($bgcolour, white)))
+      padding: 0 20px
+      margin: 0 -5px
       &:before
-        left: -6px
-        border-bottom-right-radius: 6px
-        border-width: 0 1px 1px 0
-        box-shadow: 2px 2px 0 $bgcolour
+        +rounded_bottom_left_corner
       &:after
-        right: -6px
-        border-bottom-left-radius: 6px
-        border-width: 0 0 1px 1px
-        box-shadow: -2px 2px 0 $bgcolour
+        +rounded_bottom_right_corner
       &.active
-        background: white
-        border-bottom-color: white
-        z-index: 2
-        &:before
-          box-shadow: 2px 2px 0 white
-        &:after
-          box-shadow: -2px 2px 0 white
+        border-bottom-color: $activecolour
+        background: $activecolour
+        z-index: 2 //infront of other tabs
+
+//nav
+//  background: $canvascolour
+//  position: relative
+//  overflow: hidden
+//  a, a:hover
+//    text-shadow: none 
+//    color: black
+//  &:after
+//    position: absolute
+//    content: ''
+//    bottom: 0
+//    left: 0
+//    width: 100%
+//    border-bottom: 1px solid $bordercolour 
+//    //z-index: 1
+//  &:before
+//    //z-index: 1
+//  ul
+//    list-style: none
+//    margin: 0
+//    padding: 0 0 0 10px
+//    line-height: 24px
+//    li
+//      background:      -o-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+//      background:     -ms-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+//      background:    -moz-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+//      background: -webkit-linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+//      background: linear-gradient(top, $bgcolour 50%, $gradientcolour 100%)
+//      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF
+//      position: relative
+//      border: 1px solid $bordercolour
+//      border-top-left-radius: 6px
+//      border-top-right-radius: 6px
+//      text-shadow: 0 1px #FFF
+//      margin: 0 -5px
+//      padding: 0 20px
+//      display: inline-block
+//      //z-index: 0
+//      &:before, &:after
+//        position: absolute
+//        bottom: -1px
+//        width: 5px
+//        height: 6px
+//        content: ' '
+//        border: 1px solid $bordercolour
+//      &:before
+//        left: -6px
+//        border-bottom-right-radius: 6px
+//        border-width: 0 1px 1px 0
+//        box-shadow: 2px 2px 0 $bgcolour
+//      &:after
+//        right: -6px
+//        border-bottom-left-radius: 6px
+//        border-width: 0 0 1px 1px
+//        box-shadow: -2px 2px 0 $bgcolour
+//      &.active
+//        background: white
+//        border-bottom-color: white
+//        z-index: 2
+//        &:before
+//          box-shadow: 2px 2px 0 white
+//        &:after
+//          box-shadow: -2px 2px 0 white
 //    background: $bgcolour
 //    display: inline-block
 //    margin: 0 2px

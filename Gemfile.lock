@@ -1,4 +1,12 @@
 GIT
+  remote: http://github.com/milgner/compass-rails
+  revision: 1749c06f15dc4b058427e7969810457213647fb8
+  ref: 1749c06f15dc4b058427e7969810457213647fb8
+  specs:
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+
+GIT
   remote: https://github.com/plataformatec/simple_form.git
   revision: 79ba6bfad1f34108e61a1e63d7e23c1ff4b49376
   specs:
@@ -76,8 +84,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -229,7 +235,7 @@ DEPENDENCIES
   ancestry!
   capybara
   coffee-rails (~> 4.0.0)
-  compass-rails
+  compass-rails!
   factory_girl_rails
   fuubar
   guard

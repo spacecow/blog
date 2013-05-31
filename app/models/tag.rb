@@ -10,8 +10,13 @@ class Tag < ActiveRecord::Base
     [ancestors,self].flatten
   end
 
+  def to_param
+    name
+  end
+
   class << self
     def ids_from_tokens tokens
+      p tokens
       tokens.gsub!(/<<<(.+?)>>>/){ create_tags($1).id }
       tokens.split ','
     end 

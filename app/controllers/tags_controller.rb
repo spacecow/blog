@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by name:params[:id]
   end
 
   def index
@@ -25,11 +25,11 @@ class TagsController < ApplicationController
   end
 
   def edit
-    @tag = Tag.find params[:id]
+    @tag = Tag.find_by name:params[:id]
   end
 
   def update
-    @tag = Tag.find params[:id]
+    @tag = Tag.find_by name:params[:id]
     if @tag.update tag_params
       redirect_to @tag, notice:updated(:tag)
     else

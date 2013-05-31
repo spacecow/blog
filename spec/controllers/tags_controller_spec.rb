@@ -31,7 +31,7 @@ describe TagsController do
 
   context 'update a tag' do
     let(:tag){ mock_model Tag }
-    before{ Tag.should_receive(:find).and_return tag }
+    before{ Tag.should_receive(:find_by).and_return tag }
     context 'saves to db' do
       before do
         tag.should_receive(:update).and_return true

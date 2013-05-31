@@ -8,12 +8,14 @@ gem 'pygments.rb'
 gem 'redcarpet'
 gem 'ancestry', :git => 'https://github.com/stefankroes/ancestry'
 gem 'yajl-ruby'
+#gem 'ie_conditional_tag'
 
 # former :assets
 gem 'sass-rails',   '~> 4.0.0.rc1'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'compass-rails'
+#gem 'compass-rails'
+gem "compass-rails", git: "http://github.com/milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
 gem 'therubyracer', platforms: :ruby
 
 #rails 4 cut out gems
