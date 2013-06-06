@@ -1,0 +1,1 @@
+/home/jsveholm/apps/templates/spec/models/user_spec.rb

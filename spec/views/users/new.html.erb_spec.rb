@@ -1,0 +1,1 @@
+/home/jsveholm/apps/templates/spec/views/users/new.html.erb_spec.rb

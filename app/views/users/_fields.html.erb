@@ -1,0 +1,4 @@
+<%= f.input :username, f.object.disabled? %>
+<%= f.input :email %>
+<%= f.input :password if f.object.new_record? %>
+<%= f.input :password_confirmation if f.object.new_record? %>
