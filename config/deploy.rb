@@ -1,3 +1,10 @@
+require 'bundler/capistrano'
+
+#default_run_options[:shell] = '/bin/bash --login' 
+set :default_environment, {
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+}
+
 server "viper.fir-vpc.riec.tohoku.ac.jp", :web, :app, :db, primary:true
 
 set :application, "blog"
