@@ -8,6 +8,8 @@ en:
   tag:
     one: Tag
     other: Tags
+  user:
+    one: User
 
   labels:
     add: Add %{o}
@@ -19,7 +21,13 @@ en:
   successes:
     created: '%{o} created'
     deleted: '%{o} deleted'
+    signed_up: '%{o} signed up'
     updated: '%{o} updated'
+
+  helpers:
+    submit:
+      user:
+        create: Signup
 
   simple_form:
     labels:
@@ -30,3 +38,5 @@ en:
         tag_tokens: Tags
       tag:
         leaf_name: Name
+      user:
+        password_confirmation: Confirmation

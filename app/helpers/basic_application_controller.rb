@@ -58,6 +58,7 @@ module BasicApplicationController
   def saved(o,i=nil)
     i ? succ_no(:saved,o,i) : succ(:saved,o:pl(o,1))
   end
+  def signed_up(s,i=1) succ(:signed_up,:o=>pl(s,i)) end
   def updated(o) succ(:updated,o:pl(o,1)) end
   def updated_adv(o,name); succ_adv(:updated,o,name) end
 

@@ -9,6 +9,7 @@ gem 'redcarpet'
 gem 'ancestry', :git => 'https://github.com/stefankroes/ancestry'
 gem 'yajl-ruby'
 #gem 'ie_conditional_tag'
+gem 'bcrypt-ruby'
 
 # former :assets
 gem 'sass-rails',   '~> 4.0.0.rc1'

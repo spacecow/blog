@@ -8,15 +8,8 @@ describe TagsController do
     context 'saves to db' do
       before{ post :create, tag:{name:'ruby'} }
 
-      context 'response' do
-        subject{ response }
-        it{ should redirect_to tag }
-      end
-
-      context 'flash' do
-        subject{ flash }
-        its(:notice){ should eq 'Tag created' }
-      end
+      specify{ response.should redirect_to tag }
+      specify{ flash.notice.should eq 'Tag created' }
     end
 
     context 'error' do
@@ -24,8 +17,7 @@ describe TagsController do
         tag.should_receive(:save).and_return false 
         post :create, tag:{name:'ruby'}
       end
-      subject{ response }
-      it{ should render_template :new }
+      specify{ response.should render_template :new }
     end
   end
 
@@ -38,15 +30,8 @@ describe TagsController do
         put :update, id:1, tag:{name:'ruby'}
       end
 
-      context 'response' do
-        subject{ response }
-        it{ should redirect_to tag }
-      end
-
-      context 'flash' do
-        subject{ flash }
-        its(:notice){ should eq 'Tag updated' }
-      end
+      specify{ response.should redirect_to tag }
+      specify{ flash.notice.should eq 'Tag updated' }
     end
 
     context 'error' do
@@ -54,8 +39,7 @@ describe TagsController do
         tag.should_receive(:update).and_return false
         put :update, id:1, tag:{name:'ruby'}
       end
-      subject{ response }
-      it{ should render_template :edit }
+      specify{ response.should render_template :edit }
     end
   end
 
@@ -69,14 +53,12 @@ describe TagsController do
 
       context 'response' do
         before{ delete :destroy, id:tag.id }
-        subject{ response }
-        it{ should redirect_to tags_path }
+        specify{ response.should redirect_to tags_path }
       end
 
       context 'flash' do
         before{ delete :destroy, id:tag.id }
-        subject{ flash }
-        its(:notice){ should eq 'Tag deleted' }
+        specify{ flash.notice.should eq 'Tag deleted' }
       end
     end
   end

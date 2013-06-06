@@ -8,7 +8,7 @@ describe 'tags/_fields.html.erb' do
     context "no nesting" do
       before do
         ruby.name = 'ruby'
-        view.simple_form_for(ruby){|f| @f=f }
+        view.simple_form_for(ruby){|f| @f=f}
         render 'tags/fields', f:@f 
       end
 
