@@ -6,8 +6,19 @@ class Tag < ActiveRecord::Base
 
   has_ancestry
 
+  before_validation :set_name
+
   def branch
     [ancestors,self].flatten
+  end
+
+  def leaf_name
+    _name = self.name
+    _name && _name.split('/').last
+  end
+
+  def leaf_name=(s)
+    @leaf_name = s
   end
 
   def to_param
@@ -16,7 +27,6 @@ class Tag < ActiveRecord::Base
 
   class << self
     def ids_from_tokens tokens
-      p tokens
       tokens.gsub!(/<<<(.+?)>>>/){ create_tags($1).id }
       tokens.split ','
     end 
@@ -30,6 +40,7 @@ class Tag < ActiveRecord::Base
       def create_tags tags
         return nil if tags.nil?
         rest, tag_s = pop_tag tags 
+        tag_s = "#{rest}/#{tag_s}" if rest
         parent = create_tags rest
         tag = find_by_name tag_s
         if tag.nil?
@@ -45,4 +56,11 @@ class Tag < ActiveRecord::Base
         tags.match(/(?:(.*)\/)?(.*)/).captures
       end
   end
+
+  private
+
+    def set_name
+      return unless @leaf_name #for testing
+      self[:name] = parent.try(:name) ? "#{self.parent.name}/#{@leaf_name}" : @leaf_name
+    end
 end

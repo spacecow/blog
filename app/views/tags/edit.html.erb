@@ -1,1 +1,8 @@
-<%= render 'form', tag:@tag %>
+<% present @tag do |presenter| %>
+
+<div class="tag edit">
+  <%= title edit(:tag) %>
+  <%= presenter.form %>
+</div>
+
+<% end %>

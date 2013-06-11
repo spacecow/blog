@@ -25,10 +25,10 @@ describe 'tags/_fields.html.erb' do
       end
     end
 
-    context "nesting" do
+    context "double nesting" do
       before do
         language = create :tag, name:'language'
-        ruby.name = 'ruby'
+        ruby.name = 'language/ruby'
         ruby.parent = language
         render 'tags/form', tag:ruby
       end

@@ -2,15 +2,15 @@ class TagPresenter < BasePresenter
   presents :tag
 
   def branch
-    tag.branch.map{|e| h.link_to e.name, e}.join(' > ').html_safe
+    tag.branch.map{|e| h.link_to e.leaf_name, e}.join(' > ').html_safe
   end
 
   def form
     h.render 'tags/form', tag:tag
   end
 
-  def name
-    h.link_to tag.name, tag
+  def leaf_name
+    h.link_to tag.leaf_name, tag
   end
 
   def sections

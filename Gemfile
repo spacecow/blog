@@ -11,8 +11,9 @@ gem 'yajl-ruby'
 #gem 'ie_conditional_tag'
 gem 'bcrypt-ruby'
 gem 'capistrano'
-gem 'rb-readline'
+gem 'rb-readline', '~> 0.4.2'
 gem 'unicorn'
+gem 'pry'
 
 # former :assets
 gem 'sass-rails',   '~> 4.0.0.rc1'

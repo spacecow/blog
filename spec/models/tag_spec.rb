@@ -2,12 +2,29 @@ require 'spec_helper'
 
 describe Tag do
   it 'name cannot be blank' do
-    lambda{ create :tag, name:'' }.should raise_error ActiveRecord::RecordInvalid, 'Validation failed: Name can\'t be blank'
+    expect{ create :tag, name:'' }.to raise_error *blank_error 
   end
 
   it 'name cannot be duplicated' do
     create :tag, name:'ruby'
-    lambda{ create :tag, name:'ruby' }.should raise_error ActiveRecord::RecordInvalid, 'Validation failed: Name has already been taken'
+    expect{ create :tag, name:'ruby' }.to raise_error *duplication_error 
+  end
+
+  describe '#leaf_name' do
+    let(:tag){ stub_model Tag }
+    it 'name is nil, leaf name is nil' do
+      tag.leaf_name.should be_nil 
+    end
+
+    it 'non-nested name returns the name' do
+      tag.should_receive(:name).and_return 'ruby'
+      tag.leaf_name.should eq 'ruby'
+    end
+
+    it 'nested name returns the leaf name' do
+      tag.should_receive(:name).and_return 'programming/ruby'
+      tag.leaf_name.should eq 'ruby'
+    end
   end
 
   describe '.pop_tag' do

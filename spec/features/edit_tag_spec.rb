@@ -14,7 +14,7 @@ describe 'Tag edit' do
   context "last tag" do
     before{ click_button 'Update' }
     subject{ Tag.last }
-    its(:name){ should eq 'ruby' }
+    its(:name){ should eq 'programming/ruby' }
     its(:ancestry){ should eq parent.id.to_s }
   end
 end

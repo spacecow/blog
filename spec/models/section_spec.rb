@@ -45,14 +45,14 @@ describe Section do
 
       context 'two layer tag' do
         let(:programming){ Tag.find_by_name 'programming' }
-        let(:ruby){ Tag.find_by_name 'ruby' }
+        let(:ruby){ Tag.find_by_name 'programming/ruby' }
         let(:last_section){ Section.last }
 
         it 'tag and parent has to be made' do
         end
 
         it 'tag exists, but not parent' do
-          create :tag, name:'ruby'
+          create :tag, name:'programming/ruby'
         end
 
         it 'parent exists, but not tag' do
@@ -60,14 +60,14 @@ describe Section do
         end
 
         it 'both exists, put tag points att wrong parent' do
-          create :tag, name:'ruby'
+          create :tag, name:'programming/ruby'
           create :tag, name:'programming'
         end
 
-        it 'both exists with corrent parent pointer' do
+        it 'both exists with current parent pointer' do
           
           create :tag, name:'programming'
-          create :tag, name:'ruby', ancestry:Tag.first.id.to_s
+          create :tag, name:'programming/ruby', ancestry:Tag.first.id.to_s
         end
 
         after do
@@ -76,7 +76,7 @@ describe Section do
           programming.name.should eq 'programming'
           programming.ancestry.should be_nil
           programming.section_ids.should be_empty
-          ruby.name.should eq 'ruby'
+          ruby.name.should eq 'programming/ruby'
           ruby.ancestry.should eq programming.id.to_s 
           ruby.section_ids.should eq [last_section.id]
         end

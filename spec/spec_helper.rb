@@ -26,6 +26,22 @@ Spork.prefork do
     #Include presenters
     config.include ActionView::TestCase::Behavior, example_group: {file_path: %r{spec/presenters}}
   end
+
+  def blank_error
+    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ can't be blank$/]
+  end
+
+  def confirmation_error
+    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ doesn\'t match [\w ]+$/]
+  end
+
+  def duplication_error
+    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ has already been taken$/]
+  end
+
+  def invalid_error
+    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ is invalid$/]
+  end
 end
 
 Spork.each_run do

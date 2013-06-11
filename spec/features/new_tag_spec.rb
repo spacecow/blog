@@ -13,6 +13,6 @@ describe 'Tag new' do
   context "last tag" do
     before{ click_button 'Create' }
     subject{ Tag.last }
-    its(:name){ should eq 'ruby' }
+    its(:name){ should eq 'language/ruby' }
   end
 end

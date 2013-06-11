@@ -39,20 +39,4 @@ describe User do
   it 'password confirmation cannot be blank' do
     expect{ create :user, password_confirmation:'' }.to raise_error *confirmation_error
   end
-
-  def blank_error
-    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ can't be blank$/]
-  end
-
-  def confirmation_error
-    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ doesn\'t match [\w ]+$/]
-  end
-
-  def duplication_error
-    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ has already been taken$/]
-  end
-
-  def invalid_error
-    [ActiveRecord::RecordInvalid, /^Validation failed: [\w ]+ is invalid$/]
-  end
 end

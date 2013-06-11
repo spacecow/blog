@@ -45,6 +45,6 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit :name, :parent_id
+    params.require(:tag).permit :leaf_name, :parent_id
   end
 end
