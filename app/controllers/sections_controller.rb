@@ -37,13 +37,12 @@ class SectionsController < ApplicationController
   def destroy
     @section = Section.find params[:id]
     section_url = section_url(@section)
-    post_url = post_url(@section.post) if @section.post
     previous_url = request.env['HTTP_REFERER'] 
     @section.destroy
     if previous_url == section_url
       redirect_to sections_path
-    elsif previous_url == post_url
-      redirect_to post_url
+    else
+      redirect_to :back
     end
   end
 
