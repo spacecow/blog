@@ -21,10 +21,6 @@ class Tag < ActiveRecord::Base
     @leaf_name = s
   end
 
-  def to_param
-    name
-  end
-
   class << self
     def ids_from_tokens tokens
       tokens.gsub!(/<<<(.+?)>>>/){ create_tags($1).id }

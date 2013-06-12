@@ -2,9 +2,9 @@ Blog::Application.routes.draw do
   resources :posts, only:[:show,:index,:new,:create,:edit,:update]
   resources :sections
   resources :tags
-  get 'tags/*id/edit' => 'tags#edit'
-  get 'tags/*id' => 'tags#show'
-  patch 'tags/*id' => 'tags#update'
+  #get 'tags/*id/edit' => 'tags#edit'
+  #get 'tags/*id' => 'tags#show'
+  #patch 'tags/*id' => 'tags#update'
 
   resources :users, only:[:new,:create,:edit,:update]
 

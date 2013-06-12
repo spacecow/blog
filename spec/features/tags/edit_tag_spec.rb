@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Tag edit', focus:true do
+describe 'Tag edit' do
   let(:tag){ create :tag, name:'programming/python' }
   let!(:parent){ create :tag, name:'programming' }
   before do

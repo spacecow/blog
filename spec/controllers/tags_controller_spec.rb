@@ -6,7 +6,7 @@ describe TagsController do
     before{ Tag.should_receive(:new).and_return tag }
 
     context 'saves to db' do
-      before{ post :create, tag:{name:'ruby'} }
+      before{ post :create, tag:{id:1} }
 
       specify{ response.should redirect_to tag }
       specify{ flash.notice.should eq 'Tag created' }
@@ -15,7 +15,7 @@ describe TagsController do
     context 'error' do
       before do
         tag.should_receive(:save).and_return false 
-        post :create, tag:{name:'ruby'}
+        post :create, tag:{id:1}
       end
       specify{ response.should render_template :new }
     end
@@ -23,11 +23,11 @@ describe TagsController do
 
   context 'update a tag' do
     let(:tag){ mock_model Tag }
-    before{ Tag.should_receive(:find_by).and_return tag }
+    before{ Tag.should_receive(:find).and_return tag }
     context 'saves to db' do
       before do
         tag.should_receive(:update).and_return true
-        put :update, id:1, tag:{name:'ruby'}
+        put :update, id:1, tag:{id:1}
       end
 
       specify{ response.should redirect_to tag }
@@ -37,7 +37,7 @@ describe TagsController do
     context 'error' do
       before do
         tag.should_receive(:update).and_return false
-        put :update, id:1, tag:{name:'ruby'}
+        put :update, id:1, tag:{id:1}
       end
       specify{ response.should render_template :edit }
     end
