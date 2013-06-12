@@ -4,6 +4,7 @@ Blog::Application.routes.draw do
   resources :tags
   get 'tags/*id/edit' => 'tags#edit'
   get 'tags/*id' => 'tags#show'
+  patch 'tags/*id' => 'tags#update'
 
   resources :users, only:[:new,:create,:edit,:update]
 

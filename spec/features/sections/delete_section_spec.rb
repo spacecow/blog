@@ -1,23 +1,14 @@
 require 'spec_helper'
 
-describe 'Section delete', focus:true do
+describe 'Section delete' do
   let(:click_delete_section){ all('a.delete.section').first.click }
 
   context 'on section page' do
     let(:section){ create :section }
-    before do
-      section.tags << create(:tag)
-      visit section_path section
-    end
+    before{ visit section_path section }
 
     it "deletes the section" do
       expect{ click_delete_section }.to change(Section,:count).by(-1)
-    end
-    it "deletes its taggings" do
-      expect{ click_delete_section }.to change(Tagging,:count).by(-1)
-    end
-    it "does not delete the tag" do
-      expect{ click_delete_section }.to change(Tag,:count).by(0)
     end
 
     it "redirects to the sections index page" do
