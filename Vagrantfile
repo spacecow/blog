@@ -7,7 +7,18 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "lucid32"
+  # config.vm.box = "lucid32"
+  config.vm.box = "ubuntu/trusty64"
+
+  config.vm.provision :shell, path:"packages-update.sh"
+  config.vm.provision :shell, path:"packages-git.sh"
+  config.vm.provision :shell, :inline => "echo -e '#{File.read("#{Dir.home}/.gitconfig")}' > '/home/vagrant/.gitconfig'"
+  config.vm.provision :shell, :inline => "echo -e '#{File.read("#{Dir.home}/.ssh/id_rsa")}' > '/home/vagrant/.ssh/id_rsa'"
+  config.vm.provision :shell, path:"vim-johan.sh", privileged:false
+  config.vm.provision :shell, path:"packages-ssl.sh"
+  config.vm.provision :shell, path:"rbenv-version.sh", privileged:false
+  config.vm.provision :shell, path:"packages-nokogiri.sh"
+  # config.vm.provision :shell, path:"rails.sh", privileged:false
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -17,7 +28,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network :forwarded_port, guest: 80, host: 8080
-  config.vm.network :forwarded_port, guest: 3000, host: 3000
+  config.vm.network :forwarded_port, guest: 3001, host: 3001
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
